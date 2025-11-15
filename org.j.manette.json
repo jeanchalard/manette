@@ -1,0 +1,27 @@
+{
+    "id": "org.j.manette",
+    "runtime": "org.kde.Platform",
+    "runtime-version": "6.8",
+    "sdk": "org.kde.Sdk",
+    "command": "manette",
+    "tags": ["nightly"],
+    "desktop-file-name-suffix": " (Nightly)",
+    "finish-args": [
+        "--share=ipc",
+        "--share=network",
+        "--socket=x11",
+        "--socket=wayland",
+        "--device=dri"
+    ],
+    "separate-locales": false,
+
+    "modules": [
+        {
+            "name": "manette",
+            "buildsystem": "cmake-ninja",
+            "builddir": true,
+            "sources": [ { "type": "dir", "path": ".", "skip": [".git"] } ]
+        }
+    ]
+}
+

@@ -1,0 +1,13 @@
+# SPDX-License-Identifier: GPL-3.0-or-later
+# SPDX-FileCopyrightText: 2025 J <jean.chalard@gmail.com>
+[Desktop Entry]
+Name=manette
+Comment=manette
+Version=1.0
+Exec=manette
+Icon=applications-development
+Type=Application
+Terminal=false
+# Add an actual main category here (and possibly applicable additional ones)
+#   https://specifications.freedesktop.org/menu-spec/latest/apa.html#main-category-registry
+Categories=Game;System;KidsGame;Monitor

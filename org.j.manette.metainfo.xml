@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+  SPDX-License-Identifier: GPL-3.0-or-later
+  SPDX-FileCopyrightText: 2025 J jean.chalard@gmail.com>
+ -->
+<component type="desktop-application">
+  <id>org.j.manette</id>
+  <name>App for manette</name>
+  <summary>A small toy to amuse my 1-year-old with my cheap controller</summary>
+  <metadata_license>GPL 3.0 or later</metadata_license>
+  <project_license>GPL-3.0-or-later</project_license>
+  <developer_name>J</developer_name>
+  <description>
+    <p>This small app displays four black quadrants that will lit up in the color of the associated button when pressed. Directions superimpose white on the quadrants.</p>
+    <p>In addition the app will play some media file as a button is pressed, to be found in src/res/*.ogg</p>
+  </description>
+</component>
