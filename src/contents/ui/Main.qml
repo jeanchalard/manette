@@ -6,6 +6,7 @@ import QtQuick.Controls as QQC2
 import QtQuick.Layouts
 import QtQuick.Shapes
 import QtMultimedia
+import org.kde.plasma.components
 import org.kde.kirigami as Kirigami
 import org.j.manette
 
@@ -70,7 +71,10 @@ Kirigami.ApplicationWindow {
                     break
                 case A:
                 case RIGHT:
-                    rightShape.fillColor = (right == 0) ? "#000000" : (right == 1) ? "#b50003" : (right == 2) ? "#6f6f6f" : (right == 3) ? "#da6d6e" : "#FFFFFF"
+                    if (violet.checked)
+                        rightShape.fillColor = (right == 0) ? "#000000" : (right == 1) ? "#a100ff" : (right == 2) ? "#6f6f6f" : (right == 3) ? "d07fff" : "#FFFFFF"
+                    else
+                        rightShape.fillColor = (right == 0) ? "#000000" : (right == 1) ? "#b50003" : (right == 2) ? "#6f6f6f" : (right == 3) ? "#da6d6e" : "#FFFFFF"
                     break
             }
             if (!pressed) return
@@ -83,25 +87,32 @@ Kirigami.ApplicationWindow {
         }
     }
 
+// TODO : Here I want a widget that creates a single persistent stream playing all audio, and play ogg. But :
+// - SoundEffect can only read wav (multiple MB in this app), and creates a Pulse node with `media.role = event` which is not shown as a stream in the KDE mixer or pavucontrol (but is in qpwgraph).
+// - MediaPlayer will create a new stream for each play, so with short sounds you don't have time to move the sound to another output with the mixer or patchbay.
+// Using SoundEffect for now because, while big wav are annoying they are transparent to the user, and I use qpwgraph usually anyway.
+/*
     MediaPlayer {
         id : downSound
         audioOutput : AudioOutput {}
-        source : "qrc:sounds/res/bottom.ogg"
+        source : "qrc:/sounds/res/bottom.wav"
     }
-    MediaPlayer {
+*/
+    SoundEffect {
+        id : downSound
+        source : "qrc:/sounds/res/bottom.wav"
+    }
+    SoundEffect {
         id : leftSound
-        audioOutput : AudioOutput {}
-        source : "qrc:sounds/res/left.ogg"
+        source : "qrc:/sounds/res/left.wav"
     }
-    MediaPlayer {
+    SoundEffect {
         id : rightSound
-        audioOutput : AudioOutput {}
-        source : "qrc:/sounds/res/right.ogg"
+        source : "qrc:/sounds/res/right.wav"
     }
-    MediaPlayer {
+    SoundEffect {
         id : topSound
-        audioOutput : AudioOutput {}
-        source : "qrc:/sounds/res/top.ogg"
+        source : "qrc:/sounds/res/top.wav"
     }
 
     globalDrawer: Kirigami.GlobalDrawer {
@@ -237,5 +248,14 @@ Kirigami.ApplicationWindow {
             }
 
         }
+    }
+
+    CheckBox {
+        id : violet
+        checked : false
+        text : checked ? "violet" : "red"
+        anchors.right : parent.right
+        anchors.top : parent.top
+        anchors.margins : 8
     }
 }

@@ -13,7 +13,7 @@ qt_add_qml_module(manette_static
 
 qt_add_resources(manette_static "sounds"
     PREFIX "/sounds"
-    FILES res/left.ogg res/bottom.ogg res/right.ogg res/top.ogg
+    FILES res/left.ogg res/bottom.ogg res/right.ogg res/top.ogg res/left.wav res/bottom.wav res/right.wav res/top.wav
 )
 
 find_package(PkgConfig REQUIRED)
